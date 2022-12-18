@@ -1,0 +1,152 @@
+﻿<Window x:Class="project.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:project"
+        mc:Ignorable="d"
+        Title="Project ICT" ResizeMode="NoResize" Height="410" Width="420"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxLed">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Image x:Name="checkBoxImage" Source="img/grijs.png"></Image>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="checkBoxImage" Property="Source" Value="img/rood.png"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="checkBoxImage" Property="Source" Value="img/grijs.png"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <GroupBox Header="COM-port" Margin="5">
+                    <ComboBox Name="cbxComPorts" SelectionChanged="cbxComPorts_SelectionChanged"></ComboBox>
+                </GroupBox>
+                <GroupBox Header="Power" Margin="5">
+                    <ComboBox Name="cbxPower" IsEnabled="False" SelectionChanged="cbxPower_SelectionChanged"></ComboBox>
+                </GroupBox>
+                <GroupBox Header="Led-test" Margin="5">
+                    <ComboBox Name="cbxLedtest" IsEnabled="False" SelectionChanged="cbxLedtest_SelectionChanged"></ComboBox>
+                </GroupBox>
+                <GroupBox Header="Reset" Margin="5">
+                    <Button x:Name="btnClear" Click="btnClear_Click">Clear leds</Button>
+                </GroupBox>
+                <GroupBox Header="Alles aan" Margin="5">
+                    <StackPanel>
+                        <TextBox x:Name="txt" Margin="1"></TextBox>
+                        <Button x:Name="btnAan" Click="btnAan_Click" Margin="1">Toon tekst</Button>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+            <GroupBox Grid.Column="1" Header="Matrix" Margin="5" Padding="5">
+                <Grid Width="250" Height="250" x:Name="grdMatrix">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                        <RowDefinition Height="0.125*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox Grid.Column="0" Grid.Row="0" x:Name="c1" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="0" x:Name="c2" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="0" x:Name="c3" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="0" x:Name="c4" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="0" x:Name="c5" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="0" x:Name="c6" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="0" x:Name="c7" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="0" x:Name="c8" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="1" x:Name="c9" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="1" x:Name="c10" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="1" x:Name="c11" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="1" x:Name="c12" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="1" x:Name="c13" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="1" x:Name="c14" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="1" x:Name="c15" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="1" x:Name="c16" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="2" x:Name="c17" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="2" x:Name="c18" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="2" x:Name="c19" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="2" x:Name="c20" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="2" x:Name="c21" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="2" x:Name="c22" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="2" x:Name="c23" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="2" x:Name="c24" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="3" x:Name="c25" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="3" x:Name="c26" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="3" x:Name="c27" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="3" x:Name="c28" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="3" x:Name="c29" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="3" x:Name="c30" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="3" x:Name="c31" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="3" x:Name="c32" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="4" x:Name="c33" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="4" x:Name="c34" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="4" x:Name="c35" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="4" x:Name="c36" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="4" x:Name="c37" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="4" x:Name="c38" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="4" x:Name="c39" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="4" x:Name="c40" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="5" x:Name="c41" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="5" x:Name="c42" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="5" x:Name="c43" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="5" x:Name="c44" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="5" x:Name="c45" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="5" x:Name="c46" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="5" x:Name="c47" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="5" x:Name="c48" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="6" x:Name="c49" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="6" x:Name="c50" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="6" x:Name="c51" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="6" x:Name="c52" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="6" x:Name="c53" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="6" x:Name="c54" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="6" x:Name="c55" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="6" x:Name="c56" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="0" Grid.Row="7" x:Name="c57" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="1" Grid.Row="7" x:Name="c58" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="2" Grid.Row="7" x:Name="c59" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="3" Grid.Row="7" x:Name="c60" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="4" Grid.Row="7" x:Name="c61" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="5" Grid.Row="7" x:Name="c62" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="6" Grid.Row="7" x:Name="c63" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                    <CheckBox Grid.Column="7" Grid.Row="7" x:Name="c64" IsEnabled="False" Checked="checkBoxChanged" Unchecked="checkBoxChanged" Style="{StaticResource CheckBoxLed}" Margin="0" Padding="0"></CheckBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <GroupBox VerticalAlignment="Top" Margin="5" Grid.Row="1" Header="Helderheid" Height="50">
+            <Slider Name="sldrHelderheid" IsEnabled="False" Width="300" HorizontalAlignment="center" VerticalAlignment="Center" Minimum="0" Maximum="15"  LargeChange="10" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="sldrHelderheid_ValueChanged"></Slider>
+        </GroupBox>
+    </Grid>
+</Window>
