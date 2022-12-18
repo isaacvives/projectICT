@@ -219,8 +219,11 @@ namespace project
         {
             foreach (char c in txt.Text)
             {
-                SendLetter(c);
-                System.Threading.Thread.Sleep(250);
+                if (c < 128)
+                {
+                    SendLetter(c);
+                    System.Threading.Thread.Sleep(250);
+                }
             }
             _isChanged = true;
         }

@@ -49,7 +49,7 @@
                 <GroupBox Header="Reset" Margin="5">
                     <Button x:Name="btnClear" Click="btnClear_Click">Clear leds</Button>
                 </GroupBox>
-                <GroupBox Header="Alles aan" Margin="5">
+                <GroupBox Header="Toon tekst" Margin="5">
                     <StackPanel>
                         <TextBox x:Name="txt" Margin="1"></TextBox>
                         <Button x:Name="btnAan" Click="btnAan_Click" Margin="1">Toon tekst</Button>
